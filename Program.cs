@@ -34,7 +34,32 @@ namespace linq_millionaire
             {
                 Console.WriteLine($"{millionaire.Name} is a millionaire.");
             }
+
+            /*
+                Given the same customer set, display how many millionaires per bank.
+                Ref: https://stackoverflow.com/questions/7325278/group-by-in-linq
+
+                Example Output:
+                WF 2
+                BOA 1
+                FTB 1
+                CITI 1
+            */
+            var millionairePerBank = millionaires.GroupBy(
+                mil => mil.Bank,
+                mil => mil.Name,
+                (key, person) => new
+                {
+                    Bank = key,
+                    NumberOfMillionaires = person.Count()
+                }
+            );
+            foreach(var customer in millionairePerBank) {
+                Console.WriteLine($"{customer.Bank} {customer.NumberOfMillionaires}");
+                
+            }
         }
 
     }
 }
+

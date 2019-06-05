@@ -45,6 +45,7 @@ namespace linq_millionaire
                 FTB 1
                 CITI 1
             */
+            // Here we're creating a new collectoin called millionairePerBank. We are going through our list called millionaires and using .GroupBy to access the Bank and the Name of each customer object. Then we're creating a NEW object, where the Bank is the key and then we're saying that the Number of Millionaires is going to be the number of names we are counting.
             var millionairePerBank = millionaires.GroupBy(
                 mil => mil.Bank,
                 mil => mil.Name,
